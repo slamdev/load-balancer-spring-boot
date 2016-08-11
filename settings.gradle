@@ -1,0 +1,5 @@
+rootProject.name = 'load-balancer-spring-boot'
+include 'load-balancer-spring-boot-autoconfigure'
+include 'load-balancer-spring-boot-sample'
+include 'load-balancer-spring-boot-starter'
+
