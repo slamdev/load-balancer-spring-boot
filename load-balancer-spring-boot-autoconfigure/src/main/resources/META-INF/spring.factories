@@ -1,0 +1,1 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=com.github.slamdev.boot.load.balancer.autoconfigure.LoadBalancerAutoConfiguration

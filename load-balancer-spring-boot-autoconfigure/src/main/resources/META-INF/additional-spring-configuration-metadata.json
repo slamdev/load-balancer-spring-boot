@@ -1,0 +1,16 @@
+{
+  "properties": [
+    {
+      "name": "hosts",
+      "type": "java.util.List",
+      "sourceType": "com.github.slamdev.boot.load.balancer.autoconfigure.LoadBalancerProperties",
+      "description": "Hosts to use by load balancer."
+    },
+    {
+      "name": "hostAvailabilityCheckDuration",
+      "type": "java.lang.Long",
+      "sourceType": "com.github.slamdev.boot.load.balancer.autoconfigure.LoadBalancerProperties",
+      "description": "Duration in seconds to check that failed host is back to live."
+    }
+  ]
+}
