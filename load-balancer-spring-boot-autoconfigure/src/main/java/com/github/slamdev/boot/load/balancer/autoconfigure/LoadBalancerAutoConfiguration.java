@@ -28,7 +28,7 @@ public class LoadBalancerAutoConfiguration {
                 + ".* properties settings in configuration file.");
         return new LoadBalancer(
                 properties.getHosts(),
-                null,
+                (url) -> true,
                 of(properties.getHostAvailabilityCheckDuration(), SECONDS)
         );
     }

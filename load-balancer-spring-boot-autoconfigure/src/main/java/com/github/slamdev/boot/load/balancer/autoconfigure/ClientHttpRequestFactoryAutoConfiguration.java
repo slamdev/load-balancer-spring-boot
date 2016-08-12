@@ -11,7 +11,7 @@ public class ClientHttpRequestFactoryAutoConfiguration {
 
     @Bean
     @ConditionalOnMissingBean
-    private ClientHttpRequestFactory factory() {
+    public ClientHttpRequestFactory factory() {
         return new SimpleClientHttpRequestFactory();
     }
 }
