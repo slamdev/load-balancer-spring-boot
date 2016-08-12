@@ -1,11 +1,23 @@
 plugins {
     id 'java'
     id 'idea'
-    id 'maven'
+    id 'maven-publish'
 }
 
 repositories {
+    mavenCentral()
     mavenLocal()
+}
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            groupId rootProject.group
+            artifactId project.name
+            version rootProject.version
+            from components.java
+        }
+    }
 }
 
 dependencies {

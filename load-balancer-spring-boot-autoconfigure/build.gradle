@@ -1,27 +1,29 @@
-buildscript {
-    repositories {
-        mavenCentral()
-        maven { url 'http://repo.spring.io/plugins-release' }
-    }
-    dependencies {
-        classpath 'org.springframework.build.gradle:propdeps-plugin:0.0.7'
-    }
-}
-
 plugins {
     id 'java'
     id 'idea'
     id 'findbugs'
     id 'pmd'
     id 'checkstyle'
-    id 'maven'
+    id 'maven-publish'
 }
 
 apply plugin: 'propdeps'
+apply plugin: 'propdeps-idea'
 
 apply from: '../gradle/validation.gradle'
 
 sourceCompatibility = 1.8
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            groupId rootProject.group
+            artifactId project.name
+            version rootProject.version
+            from components.java
+        }
+    }
+}
 
 repositories {
     mavenCentral()
@@ -30,9 +32,8 @@ repositories {
 }
 
 dependencies {
-    compile 'com.github.slamdev:load-balancer:1.0.0-SNAPSHOT'
-    compile 'org.springframework.boot:spring-boot:1.4.0.RELEASE'
-    compile 'org.springframework.boot:spring-boot-autoconfigure:1.4.0.RELEASE'
     compile 'org.springframework.boot:spring-boot-starter-web:1.4.0.RELEASE'
+    compile 'com.github.slamdev:load-balancer:1.0.0-SNAPSHOT'
     optional 'org.springframework.boot:spring-boot-configuration-processor:1.4.0.RELEASE'
+    provided 'org.projectlombok:lombok:1.16.10'
 }

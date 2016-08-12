@@ -1,25 +1,14 @@
-buildscript {
-    repositories {
-        mavenCentral()
-        maven { url 'http://repo.spring.io/plugins-release' }
-    }
-    dependencies {
-        classpath 'org.springframework.boot:spring-boot-gradle-plugin:1.4.0.RELEASE'
-        classpath 'org.springframework:springloaded:1.2.6.RELEASE'
-        classpath 'org.springframework.build.gradle:propdeps-plugin:0.0.7'
-    }
-}
-
 plugins {
     id 'java'
     id 'idea'
     id 'findbugs'
     id 'pmd'
     id 'checkstyle'
-    id 'io.spring.dependency-management' version '0.6.0.RELEASE'
 }
 
 apply plugin: 'propdeps'
+apply plugin: 'propdeps-idea'
+apply plugin: 'io.spring.dependency-management'
 apply plugin: 'spring-boot'
 
 apply from: '../gradle/validation.gradle'
