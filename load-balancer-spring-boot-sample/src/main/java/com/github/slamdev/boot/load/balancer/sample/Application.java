@@ -6,8 +6,6 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.client.RestTemplate;
 
-import java.util.Arrays;
-
 @SpringBootApplication
 public class Application implements CommandLineRunner {
 
@@ -20,7 +18,6 @@ public class Application implements CommandLineRunner {
 
     @Override
     public void run(String... args) {
-        restTemplate.getForEntity("http://google.com/index.htm", String.class);
-        System.out.println(Arrays.toString(args));
+        restTemplate.getForEntity("/index.html", String.class);
     }
 }

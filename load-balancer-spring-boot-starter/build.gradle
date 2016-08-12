@@ -1,36 +1,11 @@
-buildscript {
-    repositories {
-        mavenCentral()
-        maven { url 'http://repo.spring.io/plugins-release' }
-    }
-    dependencies {
-        classpath 'org.springframework.build.gradle:propdeps-plugin:0.0.7'
-    }
-}
-
 plugins {
     id 'java'
     id 'idea'
-    id 'findbugs'
-    id 'pmd'
-    id 'checkstyle'
-    id 'jacoco'
     id 'maven'
-    id 'io.spring.dependency-management' version '0.6.0.RELEASE'
-    id 'com.ofg.uptodate' version '1.6.2'
 }
 
-apply plugin: 'propdeps'
-
-apply from: '../gradle/validation.gradle'
-apply from: '../gradle/coverage.gradle'
-
-sourceCompatibility = 1.8
-
 repositories {
-    mavenCentral()
     mavenLocal()
-    jcenter()
 }
 
 dependencies {

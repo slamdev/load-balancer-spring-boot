@@ -2,7 +2,6 @@ package com.github.slamdev.boot.load.balancer.autoconfigure;
 
 import com.github.slamdev.load.balancer.LoadBalancer;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.ImportAutoConfiguration;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
@@ -13,6 +12,9 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.net.URI;
+
+import static java.net.URI.create;
+import static org.springframework.http.HttpMethod.resolve;
 
 @Configuration
 @LoadBalanced
@@ -77,7 +79,7 @@ public class LoadBalancerClientHttpRequestFactory extends AbstractClientHttpRequ
 
         private ClientHttpResponse executeInternal(byte[] body) throws IOException {
             return loadBalancer.executeRequest(getURI().toASCIIString(), getMethod().name(), (uri, method) -> {
-                ClientHttpRequest delegate = requestFactory.createRequest(getURI(), getMethod());
+                ClientHttpRequest delegate = requestFactory.createRequest(create(uri), resolve(method));
                 delegate.getHeaders().putAll(getHeaders());
                 if (body.length > 0) {
                     StreamUtils.copy(body, delegate.getBody());

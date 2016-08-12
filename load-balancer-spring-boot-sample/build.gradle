@@ -16,33 +16,15 @@ plugins {
     id 'findbugs'
     id 'pmd'
     id 'checkstyle'
-    id 'jacoco'
     id 'io.spring.dependency-management' version '0.6.0.RELEASE'
-    id 'com.gorylenko.gradle-git-properties' version '1.4.17'
-    id 'com.ofg.uptodate' version '1.6.2'
 }
 
 apply plugin: 'propdeps'
 apply plugin: 'spring-boot'
 
 apply from: '../gradle/validation.gradle'
-apply from: '../gradle/coverage.gradle'
-apply from: '../gradle/extendedTests.gradle'
 
 sourceCompatibility = 1.8
-
-gitProperties {
-    keys = [
-            'git.branch', 'git.commit.id', 'git.commit.id.abbrev', 'git.commit.user.name',
-            'git.commit.user.email', 'git.commit.message.short', 'git.commit.message.full', 'git.commit.time'
-    ]
-}
-
-processResources {
-    filesMatching('**/application.properties') {
-        expand(project.properties + project.rootProject.properties)
-    }
-}
 
 repositories {
     mavenCentral()
@@ -51,7 +33,9 @@ repositories {
 }
 
 dependencies {
-    compile project(':load-balancer-spring-boot-starter')
+    compile(project(':load-balancer-spring-boot-starter')) {
+        exclude module: 'spring-boot-starter-tomcat'
+        exclude module: 'spring-webmvc'
+    }
     optional 'org.springframework.boot:spring-boot-configuration-processor'
-    testCompile 'org.springframework.boot:spring-boot-starter-test'
 }
