@@ -5,8 +5,12 @@ plugins {
 }
 
 repositories {
-    mavenCentral()
     mavenLocal()
+    maven {
+        url  "http://dl.bintray.com/slamdev/maven"
+    }
+    jcenter()
+    mavenCentral()
 }
 
 publishing {
@@ -23,3 +27,5 @@ publishing {
 dependencies {
     compile project(':load-balancer-spring-boot-autoconfigure')
 }
+
+build.dependsOn publishToMavenLocal

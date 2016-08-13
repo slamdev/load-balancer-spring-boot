@@ -26,14 +26,19 @@ publishing {
 }
 
 repositories {
-    mavenCentral()
     mavenLocal()
+    maven {
+        url  "http://dl.bintray.com/slamdev/maven"
+    }
     jcenter()
+    mavenCentral()
 }
 
 dependencies {
     compile 'org.springframework.boot:spring-boot-starter-web:1.4.0.RELEASE'
-    compile 'com.github.slamdev:load-balancer:1.0.0-SNAPSHOT'
+    compile 'com.github.slamdev:load-balancer:1.0.0'
     optional 'org.springframework.boot:spring-boot-configuration-processor:1.4.0.RELEASE'
     provided 'org.projectlombok:lombok:1.16.10'
 }
+
+build.dependsOn publishToMavenLocal

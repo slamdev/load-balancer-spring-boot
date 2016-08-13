@@ -16,9 +16,12 @@ apply from: '../gradle/validation.gradle'
 sourceCompatibility = 1.8
 
 repositories {
-    mavenCentral()
     mavenLocal()
+    maven {
+        url  "http://dl.bintray.com/slamdev/maven"
+    }
     jcenter()
+    mavenCentral()
 }
 
 dependencies {
