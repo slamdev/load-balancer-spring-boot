@@ -23,8 +23,8 @@ public class LoadBalancerClientHttpRequestFactory extends AbstractClientHttpRequ
     private final LoadBalancer loadBalancer;
 
     @Autowired
-    public LoadBalancerClientHttpRequestFactory(LoadBalancer loadBalancer, ClientHttpRequestFactory requestFactory) {
-        super(requestFactory);
+    public LoadBalancerClientHttpRequestFactory(LoadBalancer loadBalancer) {
+        super(new SimpleClientHttpRequestFactory());
         this.loadBalancer = loadBalancer;
     }
 

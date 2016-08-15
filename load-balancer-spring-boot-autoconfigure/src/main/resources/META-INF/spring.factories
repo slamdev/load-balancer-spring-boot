@@ -1,7 +1,1 @@
-org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-  com.github.slamdev.boot.load.balancer.autoconfigure.LoadBalancerAutoConfiguration,\
-  com.github.slamdev.boot.load.balancer.autoconfigure.LoadBalancerDisposer,\
-  com.github.slamdev.boot.load.balancer.autoconfigure.ClientHttpRequestFactoryAutoConfiguration,\
-  com.github.slamdev.boot.load.balancer.autoconfigure.LoadBalancerClientHttpRequestFactory,\
-  com.github.slamdev.boot.load.balancer.autoconfigure.LoadBalancerRestTemplateCustomizer,\
-  com.github.slamdev.boot.load.balancer.autoconfigure.RestTemplateAutoConfiguration
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=com.github.slamdev.boot.load.balancer.autoconfigure.OrderedAutoConfigurations
