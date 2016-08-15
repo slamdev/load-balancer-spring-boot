@@ -49,7 +49,7 @@ public class LoadBalancerAutoConfiguration {
                 ClientHttpResponse response = request.execute();
                 return response.getStatusCode() == OK;
             } catch (IOException e) {
-                LOGGER.error("Failed to check host " + url, e);
+                LOGGER.debug("Failed to check host " + url, e);
             }
             return false;
         };
